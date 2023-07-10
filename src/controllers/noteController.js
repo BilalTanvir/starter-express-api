@@ -22,10 +22,12 @@ const createNote = async (req, res) => {
 
 const updateNote = (req, res) => {
     console.log(req.userId)
+    res.send(req.userId);
 }
 
 const deleteNote = (req, res) => {
     console.log(req.userId)
+    res.send(req.userId);
 }
 
 const getNote = async (req, res) => {
