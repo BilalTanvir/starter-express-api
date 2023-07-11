@@ -1,7 +1,7 @@
 const userModel = require("../models/user");
 const brcypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const SECRET_KEY = "NOTESKEY"
+
 
 
 const signup = async (req, res) => {
@@ -28,7 +28,7 @@ const signup = async (req, res) => {
         const token = jwt.sign({
             email: result.email,
             id: result._id
-        }, SECRET_KEY);
+        }, process.env.SECRET_KEY);
         res.status(201).json({ user: result, token: token });
 
 
@@ -56,7 +56,7 @@ const signin = async (req, res) => {
         const genToken = jwt.sign({
              email: existUser.email,
              id: existUser._id
-        },SECRET_KEY);
+        },process.env.SECRET_KEY);
 
         res.status(201).json({
             user: existUser,
