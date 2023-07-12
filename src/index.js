@@ -4,9 +4,10 @@ const mongoose = require("mongoose");
 const userRouter = require('./routes/userRoutes');
 const noteRouter = require('./routes/noteRoutes');
 const dotenv = require("dotenv");
+const cors = require("cors");
+
 dotenv.config();    
 
-const cors = require("cors");
 
 const PORT = process.env.PORT || 2000;
 
