@@ -5,7 +5,7 @@ const userRouter = require('./routes/userRoutes');
 const noteRouter = require('./routes/noteRoutes');
 const dotenv = require("dotenv");
 dotenv.config();    
-const uri = "mongodb+srv://admin:admin+router@cluster0.0lbusbp.mongodb.net/notes_db?retryWrites=true&w=majority";
+
 const cors = require("cors");
 
 const PORT = process.env.PORT || 2000;
@@ -16,12 +16,10 @@ app.use("/users", userRouter);
 app.use("/notes",noteRouter);
 
 
-// app.use(cors());
-
 app.get("/", (req, res) => {
     res.send("HGLLO");
 });
-mongoose.connect(uri).then(() => {
+mongoose.connect(process.env.MONGO_DB).then(() => {
 
     app.listen(PORT, () => {
         console.log("Server Started port no. " + PORT);
